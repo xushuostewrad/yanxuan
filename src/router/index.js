@@ -7,6 +7,7 @@ import General from '../views/index/General.vue'
 import Login from '../views/login/Index.vue'
 import Center from '../views/index/Center.vue'
 import Shop from '../views/index/Shop.vue'
+import Search from '../views/search/index.vue'
 
 Vue.use(VueRouter)
 
@@ -52,9 +53,14 @@ const router = new VueRouter({
 		},
 
 		{
-			path: 'login',
+			path: '/login',
 			name: 'login',
 			component: Login
+		},
+		{
+			path:'/search',
+			name:'search',
+			component:Search
 		},
 		{
 			path: '*',
