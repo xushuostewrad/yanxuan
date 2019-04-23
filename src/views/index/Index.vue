@@ -11,12 +11,17 @@
 	</div>
 </template>
 <script>
-	export default {
-		data(){
-			let active = this.$route.meta.tabNumber
-			return {
-				active:active
-			}
-		}
-	}
+export default {
+  data () {
+    let active = this.$route.meta.tabNumber
+    return {
+      active: active
+    }
+  }
+}
 </script>
+<style lang="less">
+#app{
+	height:100%;
+}
+</style>

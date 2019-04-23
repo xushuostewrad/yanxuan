@@ -11,56 +11,56 @@ import Shop from '../views/index/Shop.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-	routes: [{
-			path: '/',
-			name:'index',
-			component: Index,
-			children: [{
-					path: 'homepage',
-					name: 'homepage',
-					component: HomePage,
-					meta:{tabNumber:0}
-				},
-				{
-					path: 'classification',
-					name: 'classification',
-					component: Classification,
-					meta:{tabNumber:1}
-				},
-				{
-					path: 'general',
-					name: 'general',
-					component: General,
-					meta:{tabNumber:2}
-				},
-				{
-					path:'shop',
-					name:'shop',
-					component:Shop,
-					meta:{tabNumber:3}
-				},
-				{
-					path: '',
-					redirect: '/homepage'
-				}
-			]
-		},
-		{
-			path: '/center',
-			name: 'center',
-			component: Center
-		},
+  routes: [{
+    path: '/',
+    name: 'index',
+    component: Index,
+    children: [{
+      path: 'homepage',
+      name: 'homepage',
+      component: HomePage,
+      meta: { tabNumber: 0 }
+    },
+    {
+      path: 'classification',
+      name: 'classification',
+      component: Classification,
+      meta: { tabNumber: 1 }
+    },
+    {
+      path: 'general',
+      name: 'general',
+      component: General,
+      meta: { tabNumber: 2 }
+    },
+    {
+      path: 'shop',
+      name: 'shop',
+      component: Shop,
+      meta: { tabNumber: 3 }
+    },
+    {
+      path: '',
+      redirect: '/homepage'
+    }
+    ]
+  },
+  {
+    path: '/center',
+    name: 'center',
+    component: Center
+  },
 
-		{
-			path: 'login',
-			name: 'login',
-			component: Login
-		},
-		{
-			path: '*',
-			redirect: '/homepage'
-		}
-	]
+  {
+    path: 'login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '*',
+    redirect: '/homepage'
+  }
+  ]
 })
 
 export default router
