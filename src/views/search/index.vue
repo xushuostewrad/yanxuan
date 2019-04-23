@@ -7,8 +7,13 @@
 </template>
 
 <script>
-	import { mapActions } from 'vuex'
+	import { mapState,mapActions } from 'vuex'
 	export default {
+		computed:{
+			...mapState('search',[
+				'searchList'
+			])
+		},
 		methods: {
 			...mapActions('search', ['getSearchList']),
 			onSearch: function() {

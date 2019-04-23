@@ -106,7 +106,7 @@ const GET_CART_LIST_API = '/api/user/cart/getAll';
 const SINA_LOGIN_URL = 'https://api.weibo.com/oauth2/authorize';
 
 export default {
-    HOST: DEV_HOST,
+    HOST: SET_HOST,
     GOODS_TOTAL_API,
     HOME_BANNER_API,
     HOME_MENU_API,
