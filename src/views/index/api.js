@@ -119,4 +119,3 @@ export default {
   ADD_GOODS_API,
   GET_CART_LIST_API
 }
-

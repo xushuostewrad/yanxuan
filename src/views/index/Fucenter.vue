@@ -12,7 +12,7 @@
       <div class="phone">
         <van-cell-group>
           <van-field
-            v-model="telephone"
+            v-model="value"
             required
             clearable
             right-icon="question-o"
@@ -20,7 +20,7 @@
             @click-right-icon="$toast('question')"
           />
 
-          <van-field v-model="password" type="password" placeholder="请输入密码" required/>
+          <van-field type="password" placeholder="请输入密码" required/>
         </van-cell-group>
         <van-row>
           <van-col span="5" class="problem">遇到问题 ?</van-col>
@@ -47,21 +47,26 @@
         </router-link>
       </div>
     </div>
-    <router-view></router-view>
+
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      value:0
+    }
+  },
   methods: {
-    fn: function() {
-      location.href = "/#/shop";
+    fn: function () {
+      location.href = '/#/shop'
     },
-    fn1: function() {
-      location.href = "/#/homepage";
+    fn1: function () {
+      location.href = '/#/homepage'
     }
   }
-};
+}
 </script>
 
 <style lang="less">

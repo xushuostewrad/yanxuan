@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div class="header">
-      <van-search placeholder="搜索商品, 共22220款好物" v-model="value"/>
+      <van-search placeholder="搜索商品, 共22220款好物" />
     </div>
     <div class="home-sale">
       <van-badge-group  class="brand" :active-key="activeKey" @change="onChange">
@@ -17,19 +17,18 @@
           alt
           srcset
         >
-        <li class="product__item" v-for="item in list[id].subCateList" :key="item">
+        <li class="product__item" v-for="item in list[id].subCateList" :key="item.id">
           <img
             :src="item.bannerUrl"
             alt
             srcset
           >
-          <span>{{ item.frontName }}</span>
+          <span>{{ item.name }}</span>
         </li>
       </ul>
     </div>
   </div>
 </template>
-
 <script>
 import { api, request } from '../../api/index.js'
 import { mapState, mapActions } from 'vuex'
@@ -37,7 +36,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      list: [],
+      list: [{'subCateList':1}],
       activeKey: 0,
       id: 0
     }
@@ -56,6 +55,7 @@ export default {
     // console.log(api)
     request.get(api.HOST + api.CATE_NAV_API).then(res => {
       let result = res.data
+
       this.list = result.data
       console.log(this.list)
     })

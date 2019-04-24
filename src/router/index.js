@@ -12,11 +12,9 @@ import Register from '../views/index/Register.vue'
 import Email from '../views/index/Email.vue'
 
 Vue.use(VueRouter)
-
 const router = new VueRouter({
   routes: [{
     path: '/',
-    name: 'index',
     component: Index,
     children: [{
       path: 'homepage',
@@ -60,12 +58,12 @@ const router = new VueRouter({
   },
   {
     path: '/email',
-    name:'email',
+    name: 'email',
     component: Email
   },
   {
     path: '/register',
-    name:'register',
+    name: 'register',
     component: Register
   },
   {

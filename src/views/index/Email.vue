@@ -1,4 +1,3 @@
-    </van-nav-bar>
 <template>
   <div class="app">
     <van-nav-bar title="网易严选">
@@ -14,6 +13,7 @@
       <div class="phone">
         <van-cell-group>
           <van-field
+            v-model="message"
             required
             right-icon="question-o"
             placeholder="请输入手机号"
@@ -46,15 +46,20 @@
 
 <script>
 export default {
-  methods: {
-    fn: function() {
-      location.href = "/#/shop";
+  data () {
+    return {
+      message:0
+    }
+  },
+   methods: {
+    fn: function () {
+      location.href = '/#/shop'
     },
-    fn1: function() {
-      location.href = "/#/homepage";
+    fn1: function () {
+      location.href = '/#/homepage'
     }
   }
-};
+}
 </script>
 
 <style lang="less">

@@ -7,6 +7,7 @@
     </van-nav-bar>
     <div class="main">
       <div class="banner">
+
         <span>手机号注册</span>
       </div>
       <div class="phone">
@@ -34,8 +35,9 @@
           <span>
             <van-icon/>注册
           </span>
+          van-cell-group
         </router-link>
-        <van-checkbox v-model="fast" checked-color="#07c160" class="agree"  >我同意《服务条款》和《网易隐私政策》</van-checkbox>
+        <van-checkbox checked-color="#07c160" class="agree"  >我同意《服务条款》和《网易隐私政策》</van-checkbox>
         <router-link tag="div" to="/register" class="login-reg">
           <span>
             邮箱账号注册
@@ -50,20 +52,20 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       fast: true
-    };
+    }
   },
   methods: {
-    fn: function() {
-      location.href = "/#/shop";
+    fn: function () {
+      location.href = '/#/shop'
     },
-    fn1: function() {
-      location.href = "/#/homepage";
+    fn1: function () {
+      location.href = '/#/homepage'
     }
   }
-};
+}
 </script>
 
 <style lang="less">
@@ -166,5 +168,3 @@ export default {
   }
 }
 </style>
-
-

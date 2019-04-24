@@ -48,14 +48,14 @@
 <script>
 export default {
   methods: {
-    fn: function() {
-      location.href = "/#/shop";
+    fn: function () {
+      location.href = '/#/shop'
     },
-    fn1: function() {
-      location.href = "/#/homepage";
+    fn1: function () {
+      location.href = '/#/homepage'
     }
   }
-};
+}
 </script>
 
 <style lang="less">
