@@ -29,7 +29,7 @@ const router = new VueRouter({
 					meta:{tabNumber:1}
 				},
 				{
-					path: 'general',
+					path: 'general/:paramsType',
 					name: 'general',
 					component: General,
 					meta:{tabNumber:2}
