@@ -1,14 +1,16 @@
 <template>
-	<div class="home" id="root">
+	<div class="home">
 		<div class="head">
-			<h1>网易严选</h1>
-			<van-search @focus="fn1" placeholder="请输入搜索关键词" style="display: inline-block;width: 250px;"></van-search>
-			<button class="btn" @click="fn">登录</button>
-			<van-tabs>
-				<van-tab v-for="index in navList" :title="index.name">
+			<div class="head_tab">
+				<h1>网易严选</h1>
+				<van-search @focus="fn1" placeholder="请输入搜索关键词" style="display: inline-block;width: 250px;"></van-search>
+				<button class="btn" @click="fn">登录</button>
+				<van-tabs sticky>
+					<van-tab v-for="index in navList" :title="index.name">
 
-				</van-tab>
-			</van-tabs>
+					</van-tab>
+				</van-tabs>
+			</div>
 		</div>
 		<van-swipe :autoplay="3000">
 			<van-swipe-item v-for="(image, index) in bannerList" :key="index" :height="100">
@@ -84,7 +86,7 @@
 		</div>
 		<div class="category">
 			<div class="category_box">
-				<div>
+				<div class="category_title">
 					<h2>类目热销榜</h2>
 				</div>
 				<div>
@@ -107,10 +109,26 @@
 							</div>
 							<p>{{item.text}}</p>
 						</li>
+						<li>
+							<a href="javascript:;">查看更多</a>
+						</li>
 					</ul>
 				</div>
 			</div>
-
+		</div>
+		<div class="sentiment">
+			<div class="sentiment_title">
+				<span>人气推荐<a href="javascript:;">更多></a></span>
+			</div>
+			<div class="sentiment_adv">
+				<div>
+					<img src="https://yanxuan.nosdn.127.net/16b4d581afc5a9cd36e8adc8ed6ceb4f.png?imageView&quality=65&thumbnail=280x280" />
+				</div>
+				<div>
+					<p>泰国制造 天然乳胶枕 护颈优眠 升级抗菌</p>
+					<p>AAA抗菌枕套 SGS全程监控</p>
+				</div>
+			</div>
 		</div>
 		<div v-show="show" class="placed" @click="toTop"></div>
 	</div>
@@ -129,6 +147,7 @@
 			},
 			onScroll() {
 				let top = document.documentElement.scrollTop;
+
 				if(top > 500) {
 					this.show = true
 					return false
@@ -160,7 +179,10 @@
 			}
 		},
 		created() {
-
+			this.$toast.loading({
+				message:'正在加载',
+				loadingType:'spinner'
+			})
 			//获取导航菜单数据
 			request.get(api.HOST + api.HOME_MENU_API).then(res => {
 				let result = res.data
@@ -186,328 +208,5 @@
 	}
 </script>
 <style lang="less">
-	* {
-		margin: 0;
-		padding: 0;
-		font-size: 12px;
-	}
-	
-	body {
-		background: #f4f4f4;
-	}
-	
-	img {
-		width: 100%;
-		height: 185px;
-	}
-	
-	.head {
-		background: #fff;
-		h1 {
-			font-weight: normal;
-			font-size: 16px;
-			display: inline-block;
-			margin-left: 10px;
-		}
-	}
-	
-	.btn {
-		border: 1px solid #b4282d;
-		background: none;
-		color: #b4282d;
-		font-size: 12px;
-		padding: 2px;
-	}
-	
-	.van-tab {
-		margin: 0 4px;
-		span {
-			font-size: 14px;
-		}
-	}
-	
-	.nav {
-		ul {
-			display: flex;
-			justify-content: space-around;
-			font-size: 12px;
-			color: #B4282D;
-			height: 30px;
-			line-height: 30px;
-		}
-	}
-	
-	.van-col {
-		padding: 5px;
-		box-sizing: border-box;
-		img {
-			height: 60px;
-			width: 60px;
-		}
-		p {
-			text-align: center;
-		}
-	}
-	
-	.new_people {
-		text-align: center;
-		background: #fff;
-		margin-top: 10px;
-		line-height: 50px;
-		span {
-			font-size: 16px;
-			&:after {
-				content: "— ";
-			}
-			&:before {
-				content: "— ";
-			}
-		}
-	}
-	/*新人专享*/
-	
-	.new_person {
-		width: 95%;
-		margin: 0 auto;
-		overflow: hidden;
-		padding-bottom: 20px;
-		.left {
-			display: block;
-			background: #F9E9CF;
-			float: left;
-			width: 48%;
-			color: #333;
-			box-sizing: border-box;
-			margin-right: 5px;
-			p {
-				padding: 10px 0 0 25px;
-				font-size: 16px;
-			}
-			div {
-				width: 120px;
-				height: 120px;
-				margin: 27px auto;
-				img {
-					width: 100%;
-					height: 100%;
-				}
-			}
-		}
-		.right {
-			float: left;
-			color: #333;
-			width: 48%;
-			box-sizing: border-box;
-			div {
-				overflow: hidden;
-				background: #F9E9CF;
-				position: relative;
-				height: 100px;
-				padding: 10px 0 0 10px;
-				box-sizing: border-box;
-				div {
-					position: absolute;
-					top: 0;
-					right: 0;
-					img {
-						width: 100px;
-						height: 100px;
-						float: right;
-					}
-				}
-				p {
-					font-size: 16px;
-				}
-				.baoyou {
-					position: relative;
-					display: inline-block;
-					background: #CBB693;
-					border-radius: .05333rem;
-					color: #fff;
-					font-size: 12px;
-					text-align: center;
-				}
-				.tej {
-					color: #7F7F7F;
-					font-size: 12px;
-				}
-			}
-		}
-	}
-	
-	.swiper_slide {
-		background: #fff;
-		overflow: hidden;
-		margin: 0 auto;
-		padding-bottom: 10px;
-		.van-swipe {
-			.van-swipe-item {
-				img {
-					width: 100%;
-					margin: 0;
-				}
-			}
-		}
-		ul {
-			width: 95%;
-			margin: 0 auto;
-			li {
-				float: left;
-				width: 20%;
-				text-align: center;
-				div {
-					width: 50px;
-					height: 50px;
-					margin: 0 auto;
-					img {
-						width: 100%;
-						height: 100%;
-					}
-				}
-				p {
-					margin-top: 5px;
-				}
-			}
-		}
-	}
-	/*直销榜*/
-	
-	.direct {
-		background: #fff;
-		margin-bottom: 10px;
-		margin-top: 10px;
-		padding-bottom: 20px;
-		div {
-			padding: 10px 20px 10px 10px;
-			span {
-				text-indent: 5px;
-				font-size: 14px;
-				a {
-					float: right;
-					font-size: 14px;
-				}
-			}
-		}
-		ul {
-			width: 95%;
-			margin: 0 auto;
-			overflow: hidden;
-			li {
-				width: 48%;
-				height: 150px;
-				float: left;
-				background: url(../../assets/direct_one.png) no-repeat center center;
-				background-size: 100% 100%;
-				&:nth-of-type(2) {
-					background-image: url(../../assets/direct_two.png);
-					margin-bottom: 5px;
-					margin-left: 5px;
-				}
-				&:nth-of-type(3) {
-					background-image: url(../../assets/direct_thor.png);
-					margin-right: 5px;
-				}
-				&:nth-of-type(4) {
-					background-image: url(../../assets/direct_tho.png);
-				}
-				p {
-					text-align: center;
-					padding-top: 10px;
-					&:nth-of-type(2) {
-						color: #7F7F7F;
-					}
-				}
-			}
-		}
-	}
-	/*类目热销榜*/
-	
-	.category {
-		background: #fff;
-		.category_box {
-			width: 95%;
-			margin: 0 auto;
-			overflow: hidden;
-			padding-bottom: 20px;
-			div {
-				&:nth-of-type(1) {
-					padding: 10px 0;
-					h2 {
-						font-size: 16px;
-						font-weight: normal;
-					}
-				}
-			}
-		}
-		.left {
-			display: block;
-			float: left;
-			width: 48%;
-			color: #333;
-			background: #F9F3E4;
-			box-sizing: border-box;
-			margin-right: 5px;
-			height: 100px;
-			position: relative;
-			div {
-				width: 100px;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				right: 0;
-				img {
-					width: 100%;
-					height: 100%;
-				}
-			}
-		}
-		.right {
-			float: left;
-			color: #333;
-			width: 48%;
-			box-sizing: border-box;
-			height: 100px;
-			background: #EBEFF6;
-			position: relative;
-			div {
-				height: 100%;
-				width: 100px;
-				position: absolute;
-				top: 0;
-				right: 0;
-				img {
-					width: 100%;
-					height: 100%;
-				}
-			}
-		}
-		ul {
-			li {
-				float: left;
-				width: 20%;
-				div {
-					width: 50px;
-					height: 50px;
-					margin: 0 auto;
-					img {
-						width: 100%;
-						height: 100%;
-					}
-				}
-			}
-			p {
-				text-align: center;
-			}
-		}
-	}
-	
-	.placed {
-		position: fixed;
-		bottom: 80px;
-		right: 20px;
-		width: 40px;
-		height: 40px;
-		background: red;
-		border-radius: 10px;
-	}
+	@import '../../style/homepage.less';
 </style>
