@@ -35,7 +35,7 @@
             <van-icon/>注册
           </span>
         </router-link>
-        <van-checkbox v-model="fast" checked-color="#07c160" class="agree">我同意《服务条款》和《网易隐私政策》</van-checkbox>
+        <van-checkbox v-model="fast" checked-color="#07c160" class="agree"  >我同意《服务条款》和《网易隐私政策》</van-checkbox>
         <router-link tag="div" to="/register" class="login-reg">
           <span>
             邮箱账号注册
