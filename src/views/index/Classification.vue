@@ -36,7 +36,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      list: [{'subCateList':1}],
+      list: [{ 'subCateList': 1 }],
       activeKey: 0,
       id: 0
     }

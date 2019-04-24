@@ -48,10 +48,10 @@
 export default {
   data () {
     return {
-      message:0
+      message: 0
     }
   },
-   methods: {
+  methods: {
     fn: function () {
       location.href = '/#/shop'
     },
