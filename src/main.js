@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { Tabbar, TabbarItem, Swipe, SwipeItem, Lazyload, Search,Badge, BadgeGroup } from 'vant'
+import { Tabbar,Field, TabbarItem, Checkbox, CheckboxGroup, Swipe, Icon, Row, Col,RadioGroup, Radio, SwipeItem, Toast, Lazyload, Search, Badge, BadgeGroup, NavBar } from 'vant'
 
 Vue.config.productionTip = false
 
@@ -13,7 +13,17 @@ Vue.use(Tabbar)
   .use(Search)
   .use(Badge)
   .use(BadgeGroup)
-
+  .use(NavBar)
+  .use(Toast)
+  .use(Icon)
+  .use(Row)
+  .use(Col)
+  .use(Field)
+  .use(RadioGroup)
+  .use(Radio)
+  .use(Checkbox)
+  .use(CheckboxGroup)
+  
 new Vue({
   router,
   render: h => h(App)

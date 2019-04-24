@@ -23,9 +23,9 @@
 
 <script>
 export default {
-  methods:{
-    fn:function(){
-      location.href="/#/center"
+  methods: {
+    fn: function () {
+      location.href = '/#/center'
     }
   }
 

@@ -7,6 +7,9 @@ import General from '../views/index/General.vue'
 import Login from '../views/login/Index.vue'
 import Center from '../views/index/Center.vue'
 import Shop from '../views/index/Shop.vue'
+import Fucenter from '../views/index/Fucenter.vue'
+import Register from '../views/index/Register.vue'
+import Email from '../views/index/Email.vue'
 
 Vue.use(VueRouter)
 
@@ -50,12 +53,27 @@ const router = new VueRouter({
     name: 'center',
     component: Center
   },
-
+  {
+    path: '/fucenter',
+    name: 'fucenter',
+    component: Fucenter
+  },
+  {
+    path: '/email',
+    name:'email',
+    component: Email
+  },
+  {
+    path: '/register',
+    name:'register',
+    component: Register
+  },
   {
     path: 'login',
     name: 'login',
     component: Login
   },
+
   {
     path: '*',
     redirect: '/homepage'

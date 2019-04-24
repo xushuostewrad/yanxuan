@@ -31,40 +31,39 @@
 </template>
 
 <script>
-import { api, request } from "../../api/index.js";
-import { mapState, mapActions } from "vuex";
-import axios from "axios";
+import { api, request } from '../../api/index.js'
+import { mapState, mapActions } from 'vuex'
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       list: [],
       activeKey: 0,
-      id:0
-    };
-  },
-   methods: {
-    onChange(key) {
-      this.activeKey = key;
-      console.log(this)
-    },
-    fn(index){
-        this.id=index;
-        console.log(this.list[index])
+      id: 0
     }
   },
-  created() {
+  methods: {
+    onChange (key) {
+      this.activeKey = key
+      console.log(this)
+    },
+    fn (index) {
+      this.id = index
+      console.log(this.list[index])
+    }
+  },
+  created () {
     // console.log(api)
     request.get(api.HOST + api.CATE_NAV_API).then(res => {
-      let result = res.data;
-      this.list = result.data;
-      console.log(this.list);
-
-    });
+      let result = res.data
+      this.list = result.data
+      console.log(this.list)
+    })
     // this.getData()
     // console.log(api.CATE_NAV_API)
-  },
+  }
 
-};
+}
 </script>
 
 <style lang="less">
@@ -81,6 +80,9 @@ export default {
   &:hover{
     color:red;
   }
+}
+.van-search{
+width:100%;
 }
 .home-sale {
   display: flex;
