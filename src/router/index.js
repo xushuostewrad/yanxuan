@@ -68,7 +68,7 @@ const router = new VueRouter({
     component: Register
   },
   {
-    path: 'login',
+    path: '/login',
     name: 'login',
     component: Login
   },
@@ -76,6 +76,12 @@ const router = new VueRouter({
   {
     path: '*',
     redirect: '/homepage'
+  }
+  ,
+  {
+  	path:"/search",
+  	name:'search',
+  	component:Search
   }
   ]
 })
