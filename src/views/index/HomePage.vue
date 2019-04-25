@@ -218,10 +218,14 @@
 	export default {
 		methods: {
 			fn: function() {
-				location.href = '/#/center'
+				this.$router.replace({
+					name:'center'
+				})
 			},
 			fn1: function() {
-				location.href = '/#/search'
+				this.$router.replace({
+					name:'search'
+				})
 			},
 			onScroll() {
 				let top = document.documentElement.scrollTop;

@@ -25,7 +25,9 @@
 export default {
   methods: {
     fn: function () {
-      location.href = '/#/center'
+      this.$router.replace({
+      	name:'center'
+      })
     }
   }
 
