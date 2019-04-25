@@ -78,9 +78,9 @@ const router = new VueRouter({
     redirect: '/homepage'
   },
   {
-  	path:"/search",
-  	name:'search',
-  	component:Search
+  	path: '/search',
+  	name: 'search',
+  	component: Search
   }
   ]
 })

@@ -7,7 +7,6 @@
 				<button class="btn" @click="fn">登录</button>
 				<van-tabs sticky>
 					<van-tab v-for="item in navList" :title="item.name">
-
 					</van-tab>
 				</van-tabs>
 			</div>
@@ -135,78 +134,77 @@
 </template>
 
 <script>
-	import { api, request } from '../../api/index.js'
-	import axios from 'axios'
-	export default {
-		methods: {
-			fn: function() {
-				location.href = '/#/login'
-			},
-			fn1: function() {
-				location.href = '/#/search'
-			},
-			onScroll() {
-				let top = document.documentElement.scrollTop;
+import { api, request } from '../../api/index.js'
+import axios from 'axios'
+export default {
+  methods: {
+    fn: function () {
+      location.href = '/#/login'
+    },
+    fn1: function () {
+      location.href = '/#/search'
+    },
+    onScroll () {
+      let top = document.documentElement.scrollTop
 
-				if(top > 500) {
-					this.show = true
-					return false
-				} else {
-					this.show = false
-				}
-			},
-			toTop: function() {
-				let top = document.documentElement.scrollTop;
-				let timer = setInterval(function() {
-					top = top - 10;
-					console.log(top);
-					if(top < 0) {
-						top = 0;
-						clearInterval(timer);
-					}
-				}, 10)
-			}
-		},
-		mounted() {
-			window.addEventListener("scroll", this.onScroll)
-		},
-		data() {
-			return {
-				navList: [],
-				bannerList: [],
-				list: [],
-				show: false
-			}
-		},
-		created() {
-			this.$toast.loading({
-				message:'正在加载',
-				loadingType:'spinner'
-			})
-			//获取导航菜单数据
-			request.get(api.HOST + api.HOME_MENU_API).then(res => {
-				let result = res.data
-				this.navList = result.data
-				console.log(this.navList)
-			})
-			//获取首页轮播图数据
-			request.get(api.HOST + api.HOME_BANNER_API).then(res => {
-				let result = res.data
-				this.bannerList = result.data
-			})
-			//获取菜单数据
-			request.get(api.HOST + api.HOME_CATE_API).then(res => {
-				let result = res.data
-				this.list = result.data.kingKongList
-			})
+      if (top > 500) {
+        this.show = true
+        return false
+      } else {
+        this.show = false
+      }
+    },
+    toTop: function () {
+      let top = document.documentElement.scrollTop
+      let timer = setInterval(function () {
+        top = top - 10
+        // console.log(top)
+        if (top < 0) {
+          top = 0
+          clearInterval(timer)
+        }
+      }, 10)
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  data () {
+    return {
+      navList: [],
+      bannerList: [],
+      list: [],
+      show: false
+    }
+  },
+  created () {
+    this.$toast.loading({
+      message: '正在加载',
+      loadingType: 'spinner'
+    })
+    // 获取导航菜单数据
+    request.get(api.HOST + api.HOME_MENU_API).then(res => {
+      let result = res.data
+      this.navList = result.data
+      console.log(this.navList)
+    })
+    // 获取首页轮播图数据
+    request.get(api.HOST + api.HOME_BANNER_API).then(res => {
+      let result = res.data
+      this.bannerList = result.data
+    })
+    // 获取菜单数据
+    request.get(api.HOST + api.HOME_CATE_API).then(res => {
+      let result = res.data
+      this.list = result.data.kingKongList
+    })
 
-			//获取详细商品数据
-			request.get(api.HOST + api.CATE_NAV_API).then(res => {
-				let result = res.data
-
-			})
-		}
-	}
+    // 获取详细商品数据
+    request.get(api.HOST + api.CATE_NAV_API).then(res => {
+      let result = res.data
+    })
+  }
+}
 </script>
 <style lang="less">
 	@import '../../style/homepage.less';

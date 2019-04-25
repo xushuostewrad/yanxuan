@@ -54,7 +54,7 @@ export default {
     fn1: function () {
       location.href = '/#/homepage'
     },
-     fn3: function () {
+    fn3: function () {
       location.href = '/#/search'
     }
   }

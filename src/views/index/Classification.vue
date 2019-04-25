@@ -1,11 +1,17 @@
 <template>
   <div class="app">
     <div class="header">
-      <van-search placeholder="搜索商品, 共22220款好物" />
+      <van-search placeholder="搜索商品, 共22220款好物"/>
     </div>
     <div class="home-sale">
-      <van-badge-group  class="brand" :active-key="activeKey" @change="onChange">
-        <van-badge class="brand__item" v-for="(item,index) in list" v-on:click="fn(index)"    :key="item.id" :title="item.name" />
+      <van-badge-group class="brand" :active-key="activeKey" @change="onChange">
+        <van-badge
+          class="brand__item"
+          v-for="(item,index) in list"
+          v-on:click="fn(index)"
+          :key="item.id"
+          :title="item.name"
+        />
       </van-badge-group>
       <!-- <ul class="brand">
         <li class="brand__item" v-for="item in list" :key="item.id">{{ item.name }}</li>
@@ -18,11 +24,7 @@
           srcset
         >
         <li class="product__item" v-for="item in list[id].subCateList" :key="item.id">
-          <img
-            :src="item.bannerUrl"
-            alt
-            srcset
-          >
+          <img :src="item.bannerUrl" alt srcset>
           <span>{{ item.name }}</span>
         </li>
       </ul>
@@ -30,40 +32,36 @@
   </div>
 </template>
 <script>
-import { api, request } from '../../api/index.js'
-import { mapState, mapActions } from 'vuex'
-import axios from 'axios'
+import { api, request } from "../../api/index.js";
+import { mapState, mapActions } from "vuex";
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
-      list: [{ 'subCateList': 1 }],
+      list: [{ subCateList: 1 }],
       activeKey: 0,
       id: 0
-    }
+    };
   },
   methods: {
-    onChange (key) {
-      this.activeKey = key
-
+    onChange(key) {
+      this.activeKey = key;
     },
-    fn (index) {
-      this.id = index
-
+    fn(index) {
+      this.id = index;
     }
   },
-  created () {
+  created() {
     // console.log(api)
     request.get(api.HOST + api.CATE_NAV_API).then(res => {
-      let result = res.data
+      let result = res.data;
 
-      this.list = result.data
-
-    })
+      this.list = result.data;
+    });
     // this.getData()
     // console.log(api.CATE_NAV_API)
   }
-
-}
+};
 </script>
 
 <style lang="less">
@@ -75,14 +73,14 @@ export default {
   height: 56px;
   border-bottom: 1px solid #eee;
 }
-.van-badge__text{
+.van-badge__text {
   line-height: 0;
-  &:hover{
-    color:red;
+  &:hover {
+    color: red;
   }
 }
-.van-search{
-width:100%;
+.van-search {
+  width: 100%;
 }
 .home-sale {
   display: flex;

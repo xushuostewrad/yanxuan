@@ -11,24 +11,24 @@
 </template>
 
 <script>
-	import { mapState, mapActions } from 'vuex'
-	export default {
-		computed: {
-			...mapState('search', [
-				'searchList'
-			])
-		},
-		methods: {
-			...mapActions('search', ['getSearchList']),
-			fn:function(){
-				location.href = '/#/homepage'
-			}
-		},
-		created() {
-			this.getSearchList();
-		},
+import { mapState, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState('search', [
+      'searchList'
+    ])
+  },
+  methods: {
+    ...mapActions('search', ['getSearchList']),
+    fn: function () {
+      location.href = '/#/homepage'
+    }
+  },
+  created () {
+    this.getSearchList()
+  }
 
-	}
+}
 </script>
 
 <style lang="less">
