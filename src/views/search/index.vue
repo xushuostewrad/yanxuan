@@ -3,7 +3,7 @@
 		<van-icon name="wap-home" @click="fn" />
 		<van-search placeholder="请输入搜索关键词" show-action shape="round">
 			<ul>
-				<li v-for="item,index in searchList" :key="index">{{}}</li>
+				<li v-for="(item,index) in searchList" :key="index">{{}}</li>
 			</ul>
 			<div slot="action">搜索</div>
 		</van-search>

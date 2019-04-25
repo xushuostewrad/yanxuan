@@ -6,7 +6,7 @@
 				<van-search @focus="fn1" placeholder="请输入搜索关键词" style="display: inline-block;width: 250px;"></van-search>
 				<button class="btn" @click="fn">登录</button>
 				<van-tabs sticky>
-					<van-tab v-for="index in navList" :title="index.name">
+					<van-tab v-for="item in navList" :title="item.name">
 
 					</van-tab>
 				</van-tabs>
@@ -24,7 +24,7 @@
 		</van-row>
 		<div style="background: #fff;" class="swiper_slide">
 			<ul>
-				<li v-for="item,index in list" :key="index">
+				<li v-for="(item,index) in list" :key="index">
 					<div>
 						<img :src="item.picUrl">
 					</div>
@@ -103,7 +103,7 @@
 						</div>
 					</div>
 					<ul>
-						<li v-for="item,index in list" :key="index">
+						<li v-for="(item,index) in list" :key="index">
 							<div>
 								<img :src="item.picUrl">
 							</div>
@@ -187,6 +187,7 @@
 			request.get(api.HOST + api.HOME_MENU_API).then(res => {
 				let result = res.data
 				this.navList = result.data
+				console.log(this.navList)
 			})
 			//获取首页轮播图数据
 			request.get(api.HOST + api.HOME_BANNER_API).then(res => {

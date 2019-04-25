@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <van-nav-bar title="网易严选">
-      <van-icon name="search" slot="right"/>
+      <van-icon name="search" slot="right" @click="fn3"/>
       <van-icon name="wap-home" @click="fn1" slot="left" style="top:-36px"/>
       <van-icon name="shopping-cart-o" @click="fn" slot="right"/>
     </van-nav-bar>
@@ -53,6 +53,9 @@ export default {
     },
     fn1: function () {
       location.href = '/#/homepage'
+    },
+     fn3: function () {
+      location.href = '/#/search'
     }
   }
 }
