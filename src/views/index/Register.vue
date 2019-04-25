@@ -1,8 +1,8 @@
 <template>
-  <div class="Email">
+  <div class="register">
     <van-nav-bar title="网易严选">
-      <van-icon name="search" slot="right"/>
-      <van-icon name="wap-home" @click="fn1" slot="left"/>
+      <van-icon name="search" slot="right" style="margin-right:10px"/>
+      <van-icon name="wap-home" @click="fn1" slot="left" style="top:-36px"/>
       <van-icon name="shopping-cart-o" @click="fn" slot="right"/>
     </van-nav-bar>
     <div class="main">
@@ -26,8 +26,8 @@
           <van-field type="password" placeholder="请输入密码" required/>
         </van-cell-group>
         <van-row>
-          <van-col span="5" class="problem">遇到问题 ?</van-col>
-          <van-col span="10" offset="8" class="verification">使用密码验证登录</van-col>
+          <van-col span="6" class="problem">遇到问题 ?</van-col>
+          <van-col span="9" offset="8" class="verification">使用密码验证登录</van-col>
         </van-row>
       </div>
       <div class="login">
@@ -35,9 +35,9 @@
           <span>
             <van-icon/>注册
           </span>
-          van-cell-group
+
         </router-link>
-        <van-checkbox checked-color="#07c160" class="agree"  >我同意《服务条款》和《网易隐私政策》</van-checkbox>
+        <van-checkbox checked-color="#07c160" v-model="fast" class="agree"  >我同意《服务条款》和《网易隐私政策》</van-checkbox>
         <router-link tag="div" to="/register" class="login-reg">
           <span>
             邮箱账号注册
@@ -69,18 +69,19 @@ export default {
 </script>
 
 <style lang="less">
-.van-nav-bar {
-  .van-icon {
-    font-size:24px;
-    color: gray;
-    font-weight: bolder;
-  }
-}
+// .van-nav-bar {
+//   .van-icon {
+//     font-size:24px;
+//     color: gray;
+//     font-weight: bolder;
+//   }
+// }
 
-.Email {
+.register {
   .main {
-    height:auto;
+    height:100%;
     background: #ffffff;
+    padding-bottom: 150px;
     .banner {
       height: 140px;
       margin: 0 auto;
@@ -99,7 +100,7 @@ export default {
       margin-bottom: 20px;
       .van-cell {
         border-bottom: 1px solid #eee;
-        margin-bottom: 5px;
+
       }
       .send-v{
         border:1px solid rgb(141, 131, 131);

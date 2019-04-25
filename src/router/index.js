@@ -10,6 +10,7 @@ import Shop from '../views/index/Shop.vue'
 import Fucenter from '../views/index/Fucenter.vue'
 import Register from '../views/index/Register.vue'
 import Email from '../views/index/Email.vue'
+import Search from '../views/search/index.vue'
 
 Vue.use(VueRouter)
 const router = new VueRouter({

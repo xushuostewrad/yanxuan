@@ -2,7 +2,7 @@
   <div class="app">
     <van-nav-bar title="网易严选">
       <van-icon name="search" slot="right"/>
-      <van-icon name="wap-home" @click="fn1" slot="left"/>
+      <van-icon name="wap-home" @click="fn1" slot="left" style="top:-36px"/>
       <van-icon name="shopping-cart-o" @click="fn" slot="right"/>
     </van-nav-bar>
     <div class="main">

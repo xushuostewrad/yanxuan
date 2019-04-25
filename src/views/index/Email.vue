@@ -2,7 +2,7 @@
   <div class="app">
     <van-nav-bar title="网易严选">
       <van-icon name="search" slot="right"/>
-      <van-icon name="wap-home" @click="fn1" slot="left"/>
+      <van-icon name="wap-home" @click="fn1" slot="left" style="top:-36px"/>
       <van-icon name="shopping-cart-o" @click="fn" slot="right"/>
     </van-nav-bar>
     <div class="main">
@@ -13,17 +13,16 @@
       <div class="phone">
         <van-cell-group>
           <van-field
-            v-model="message"
             required
             right-icon="question-o"
             placeholder="请输入手机号"
             @click-right-icon="$toast('question')"
-          />
+            />
           <van-field type="password" placeholder="请输入密码" required/>
         </van-cell-group>
         <van-row>
-          <van-col span="5" class="problem">遇到问题 ?</van-col>
-          <van-col span="10" offset="8" class="verification">使用密码验证登录</van-col>
+          <van-col span="6" class="problem">遇到问题 ?</van-col>
+          <van-col span="9" offset="8" class="verification">使用密码验证登录</van-col>
         </van-row>
       </div>
       <!-- 登录块 -->
@@ -48,7 +47,7 @@
 export default {
   data () {
     return {
-      message: 0
+
     }
   },
   methods: {

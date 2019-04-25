@@ -44,11 +44,11 @@ export default {
   methods: {
     onChange (key) {
       this.activeKey = key
-      console.log(this)
+
     },
     fn (index) {
       this.id = index
-      console.log(this.list[index])
+
     }
   },
   created () {
@@ -57,7 +57,7 @@ export default {
       let result = res.data
 
       this.list = result.data
-      console.log(this.list)
+
     })
     // this.getData()
     // console.log(api.CATE_NAV_API)
