@@ -32,8 +32,6 @@ Vue.use(Tabbar)
   .use(Toast)
   .use(Button)
 
-
-
 new Vue({
   router,
   store,

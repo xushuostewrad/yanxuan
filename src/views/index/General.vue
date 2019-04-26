@@ -56,7 +56,7 @@
 						<van-button size="large" @click="adviceTo">我要建议</van-button>
 					</div>
 					<div>
-						
+
 					</div>
 				</van-tab>
 			</van-tabs>
@@ -67,79 +67,79 @@
 </template>
 
 <script>
-	import { api, request } from '../../api/index.js'
-	import axios from 'axios'
-	export default {
-		data() {
-			let curTab = this.$route.params.paramsType === 'find' ? 0 : 1
-			return {
-				navList: ['推荐', '好货内部价', '回购榜', '晒单', '开发者日记', '达人', '上新', 'HOME'],
-				tabList: [],
-				list: [],
-				bannerList: [],
-				show: false,
-				curTab: curTab
-			}
-		},
-		methods: {
-			onClick(index, title) {
-				let paramsType = index === 0 ? 'find' : 'home';
-				this.$router.replace({
-					name: 'general',
-					params: {
-						paramsType
-					}
-				})
-			},
-			goHome: function() {
-				this.$router.replace({
-					name: 'homepage'
-				})
-			},
-			goShop: function() {
-				this.$router.replace({
-					name: 'shop'
-				})
-			},
-			adviceTo:function(){
-				console.log(document.cookie.username)
-				if(document.cookie.username == undefined){
-					this.$toast("你还没有登陆")
-				}
-			}
-		},
-		created() {
-			this.$toast.loading({
-				loadingType:'spinner'
-			})
-			request.get(api.HOST + api.HOME_BANNER_API).then(res => {
-				let result = res.data
-				this.bannerList = result.data
-			})
+import { api, request } from '../../api/index.js'
+import axios from 'axios'
+export default {
+  data () {
+    let curTab = this.$route.params.paramsType === 'find' ? 0 : 1
+    return {
+      navList: ['推荐', '好货内部价', '回购榜', '晒单', '开发者日记', '达人', '上新', 'HOME'],
+      tabList: [],
+      list: [],
+      bannerList: [],
+      show: false,
+      curTab: curTab
+    }
+  },
+  methods: {
+    onClick (index, title) {
+      let paramsType = index === 0 ? 'find' : 'home'
+      this.$router.replace({
+        name: 'general',
+        params: {
+          paramsType
+        }
+      })
+    },
+    goHome: function () {
+      this.$router.replace({
+        name: 'homepage'
+      })
+    },
+    goShop: function () {
+      this.$router.replace({
+        name: 'shop'
+      })
+    },
+    adviceTo: function () {
+      console.log(document.cookie.username)
+      if (document.cookie.username == undefined) {
+        this.$toast('你还没有登陆')
+      }
+    }
+  },
+  created () {
+    this.$toast.loading({
+      loadingType: 'spinner'
+    })
+    request.get(api.HOST + api.HOME_BANNER_API).then(res => {
+      let result = res.data
+      this.bannerList = result.data
+    })
 
-			request.get(api.HOST + api.TOPIC_LIST_API, {
-				params: {
-					page: 1
-				}
-			}).then(res => {
-				let result = res.data
-				if(result.status === 0) {
-					let data = result.data
-					data.forEach(x => {
-						x.topics.forEach(item => {
-							this.list.push(item)
-						})
-					})
-				} else {
-					console.log(result.message)
-				}
-			})
-		},
-		moueted() {
+    request.get(api.HOST + api.TOPIC_LIST_API, {
+      params: {
+        page: 1
+      }
+    }).then(res => {
+      let result = res.data
+      if (result.status === 0) {
+        let data = result.data
+        data.forEach(x => {
+          x.topics.forEach(item => {
+            this.list.push(item)
+          })
+        })
+      } else {
+        console.log(result.message)
+      }
+    })
+  },
+  moueted () {
 
-		}
+  }
 
-	}
+}
 </script>
 
 <style lang="less">
