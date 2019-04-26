@@ -68,7 +68,11 @@ const router = new VueRouter({
     component: Register
   },
   {
+<<<<<<< HEAD
     path: 'login',
+=======
+    path: '/login',
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
     name: 'login',
     component: Login
   },
@@ -82,6 +86,15 @@ const router = new VueRouter({
   	name: 'search',
   	component: Search
   }
+<<<<<<< HEAD
+=======
+  ,
+  {
+  	path:"/search",
+  	name:'search',
+  	component:Search
+  }
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
   ]
 })
 

@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<!--头部-->
 		<div class="head">
 			<div class="head_tab">
 				<h1>网易严选</h1>
@@ -11,6 +12,7 @@
 				</van-tabs>
 			</div>
 		</div>
+		<!--轮播图-->
 		<van-swipe :autoplay="3000">
 			<van-swipe-item v-for="(image, index) in bannerList" :key="index" :height="100">
 				<img v-lazy="image.picUrl" />
@@ -31,6 +33,10 @@
 				</li>
 			</ul>
 		</div>
+<<<<<<< HEAD
+=======
+		<!--新人专享-->
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
 		<div class="new_people">
 			<span>新人专享</span>
 		</div>
@@ -83,6 +89,10 @@
 				</li>
 			</ul>
 		</div>
+<<<<<<< HEAD
+=======
+		<!--类目热销榜-->
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
 		<div class="category">
 			<div class="category_box">
 				<div class="category_title">
@@ -115,6 +125,10 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
+=======
+		<!--人气推荐-->
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
 		<div class="sentiment">
 			<div class="sentiment_title">
 				<span>人气推荐<a href="javascript:;">更多></a></span>
@@ -126,14 +140,231 @@
 				<div>
 					<p>泰国制造 天然乳胶枕 护颈优眠 升级抗菌</p>
 					<p>AAA抗菌枕套 SGS全程监控</p>
+<<<<<<< HEAD
 				</div>
 			</div>
 		</div>
 		<div v-show="show" class="placed" @click="toTop"></div>
+=======
+					<p>3299￥</p>
+				</div>
+			</div>
+			<ul>
+				<li v-for="item in sentimentList" :key="item.Id">
+					<div>
+						<img :src="item.picUrl" />
+					</div>
+					<p>{{item.message}}</p>
+					<p><span>{{item.msgType}}</span><span>{{item.msgTypeT}}</span></p>
+				</li>
+			</ul>
+		</div>
+		<!--限时购-->
+		<div class="limit">
+			<div class="limit_tilte">
+				<p>
+					<b>限时购</b>
+					<span class="hours"></span>
+					<i>:</i>
+					<span class="minutes"></span>
+					<i>:</i>
+					<span class="seconds"></span>
+					<a href="javascript:;">更多></a>
+				</p>
+			</div>
+			<ul class="limit_list">
+				<li v-for="item in limitList" :key="item.Id">
+					<div>
+						<img :src="item.picUrl"/>
+					</div>
+					<p><span>￥{{item.price}}</span><span>￥{{item.disPrice}}</span></p>
+				</li>
+			</ul>
+		</div>
+		<!--尾部-->
+		<div class="footer">
+			<van-button size="small">下载APP</van-button>
+			<van-button size="small">电脑版</van-button>
+			<p>网易公司版权所有 © 1997-2019</p>
+			<p>食品经营许可证：JY13301080111719</p>
+		</div>
+		<div v-show="show" class="placed">置顶</div>
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
 	</div>
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	var getTime = (function() {
+		let hours, minutes, seconds
+		return {
+			init() {
+				this.event()
+			},
+			event() {
+				setInterval(() => {
+					this.setTime();
+					document.querySelector(".hours").innerHTML = hours;
+					document.querySelector(".minutes").innerHTML = minutes;
+					document.querySelector(".seconds").innerHTML = seconds;
+				}, 1000)
+			},
+			setTime() {
+				let date = new Date();
+				hours = date.getHours();
+				minutes = date.getMinutes();
+				seconds = date.getSeconds();
+				if(seconds < 10) {
+					seconds = "0" + seconds;
+				}
+				if(minutes < 10) {
+					minutes = "0" + minutes;
+				}
+				if(hours < 10) {
+					hours = "0" + hours;
+				}
+			}
+		}
+
+	}())
+	getTime.init();
+
+	import { api, request } from '../../api/index.js'
+	import axios from 'axios'
+	export default {
+		methods: {
+			fn: function() {
+				this.$router.replace({
+					name:'center'
+				})
+			},
+			fn1: function() {
+				this.$router.replace({
+					name:'search'
+				})
+			},
+			onScroll() {
+				let top = document.documentElement.scrollTop;
+				if(top > 300) {
+					this.show = true
+					return false
+				} else {
+					this.show = false
+				}
+			},
+			toTop() {
+				let top = document.documentElement.scrollTop;
+				let timer = setInterval(function() {
+					top -= 30
+					if(top < 0) {
+						top = 0;
+						clearInterval(timer)
+					}
+					document.documentElement.scrollTop = top;
+				}, 10)
+			}
+
+		},
+		mounted() {
+			window.addEventListener("scroll", this.onScroll)
+			document.querySelector(".placed").addEventListener("click", this.toTop)
+		},
+		data() {
+			return {
+				navList: [],
+				bannerList: [],
+				list: [],
+				show: false,
+				sentimentList: [{
+						Id: 0,
+						picUrl: 'https://yanxuan.nosdn.127.net/768355bca1c186c0c25de88bd1272d8c.png?imageView&quality=65&thumbnail=330x330',
+						message: '美国制造 除甲醛空气净化剂...',
+						msgType: '爆品',
+						msgTypeT: '限时购'
+					},
+					{
+						Id: 1,
+						picUrl: 'https://yanxuan.nosdn.127.net/48c97d6449ae2a2193d2dfc65517758d.png?imageView&quality=65&thumbnail=330x330',
+						message: '男式精梳棉圆领短袖T恤衫',
+						msgType: '爆品',
+						msgTypeT: '限时购'
+					},
+					{
+						Id: 2,
+						picUrl: 'https://yanxuan.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330',
+						message: '全净皓齿变速式声波电动牙刷',
+						msgType: '双品节特惠',
+						msgTypeT: '限时购'
+					}
+				],
+				hours: 0,
+				minutes: 0,
+				seconds: 0,
+				limitList:[
+				{
+					Id:0,
+					picUrl:'https://yanxuan.nosdn.127.net/9fa42b2e967ac449024d9723afd5f38a.png?imageView&thumbnail=216x216&quality=75',
+					price:247,
+					disPrice:369
+				},
+				{
+					Id:1,
+					picUrl:'https://yanxuan.nosdn.127.net/9d02106dc435e863fea9c9d7e27a06c5.png?imageView&thumbnail=216x216&quality=75',
+					price:9.9,
+					disPrice:12.9
+				},
+				{
+					Id:2,
+					picUrl:'https://yanxuan.nosdn.127.net/4808526f99e3e912a645dd2e4c5a20d0.png?imageView&thumbnail=216x216&quality=75',
+					price:149,
+					disPrice:199
+				},
+				{
+					Id:3,
+					picUrl:'https://yanxuan.nosdn.127.net/52b4876b561380e42ff5aa1342545523.png?imageView&thumbnail=216x216&quality=75',
+					price:988,
+					disPrice:1068
+				},
+				{
+					Id:4,
+					picUrl:'https://yanxuan.nosdn.127.net/67744653917b96ba89578882b83944a2.png?imageView&thumbnail=216x216&quality=75',
+					price:159,
+					disPrice:199
+				},
+				{
+					Id:5,
+					picUrl:'https://yanxuan.nosdn.127.net/6a4bae3cbf19f139c852583baa535e14.png?imageView&thumbnail=216x216&quality=75',
+					price:247,
+					disPrice:369
+				},
+				]
+			}
+		},
+		created() {
+
+			//			this.$toast.loading({
+			//				message: '正在加载',
+			//				loadingType: 'spinner'
+			//			})
+			//获取导航菜单数据
+			request.get(api.HOST + api.HOME_MENU_API).then(res => {
+				let result = res.data
+				this.navList = result.data
+			})
+			//获取首页轮播图数据
+			request.get(api.HOST + api.HOME_BANNER_API).then(res => {
+				let result = res.data
+				this.bannerList = result.data
+			})
+			//获取菜单数据
+			request.get(api.HOST + api.HOME_CATE_API).then(res => {
+				let result = res.data
+				this.list = result.data.kingKongList
+			})
+=======
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
 import { api, request } from '../../api/index.js'
 import axios from 'axios'
 export default {
@@ -146,6 +377,10 @@ export default {
     },
     onScroll () {
       let top = document.documentElement.scrollTop
+<<<<<<< HEAD
+=======
+>>>>>>> 166d84d6e13a3ab05b8ffaf90f92e13640028654
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
 
       if (top > 500) {
         this.show = true
@@ -208,4 +443,8 @@ export default {
 </script>
 <style lang="less">
 	@import '../../style/homepage.less';
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 196711ec6669a64176c6eeaa43747faa0b64219f
